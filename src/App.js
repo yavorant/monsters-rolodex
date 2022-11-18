@@ -13,6 +13,7 @@ class App extends Component {
         lastName: 'Drago',
       },
       company: 'Google',
+      relation: 'hate',
     };
   }
 
@@ -22,14 +23,22 @@ class App extends Component {
         <header className='App-header'>
           <img src={logo} className='App-logo' alt='logo' />
           <p>
-            Hi {this.state.name.firstName} {this.state.name.lastName}, I like{' '}
-            {this.state.company}
+            Hi {this.state.name.firstName} {this.state.name.lastName}, I{' '}
+            {this.state.relation} {this.state.company}
           </p>
           <button
             onClick={() => {
-              this.setState({
-                name: { firstName: 'Ian', lastName: 'Petrenko' },
-              });
+              this.setState(
+                (state, props) => {
+                  return {
+                    name: { firstName: 'Ian', lastName: 'Petrenko' },
+                    relation: 'like',
+                  };
+                },
+                () => {
+                  console.log(this.state); //callback runs only after state has been updated
+                }
+              );
             }}
           >
             Change name
