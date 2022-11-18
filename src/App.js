@@ -1,6 +1,5 @@
 import { Component } from 'react';
 
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -8,42 +7,24 @@ class App extends Component {
     super();
 
     this.state = {
-      name: {
-        firstName: 'Ivan',
-        lastName: 'Drago',
+      monster1: {
+        name: 'Linda',
       },
-      company: 'Google',
-      relation: 'hate',
+      monster2: {
+        name: 'Frank',
+      },
+      monster3: {
+        name: 'Jacky',
+      },
     };
   }
 
   render() {
     return (
       <div className='App'>
-        <header className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <p>
-            Hi {this.state.name.firstName} {this.state.name.lastName}, I{' '}
-            {this.state.relation} {this.state.company}
-          </p>
-          <button
-            onClick={() => {
-              this.setState(
-                (state, props) => {
-                  return {
-                    name: { firstName: 'Ian', lastName: 'Petrenko' },
-                    relation: 'like',
-                  };
-                },
-                () => {
-                  console.log(this.state); //callback runs only after state has been updated
-                }
-              );
-            }}
-          >
-            Change name
-          </button>
-        </header>
+        <h1>{this.state.monster1.name}</h1>
+        <h1>{this.state.monster2.name}</h1>
+        <h1>{this.state.monster3.name}</h1>
       </div>
     );
   }
