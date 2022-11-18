@@ -8,7 +8,11 @@ class App extends Component {
     super();
 
     this.state = {
-      name: 'Ivan',
+      name: {
+        firstName: 'Ivan',
+        lastName: 'Drago',
+      },
+      company: 'Google',
     };
   }
 
@@ -17,10 +21,15 @@ class App extends Component {
       <div className='App'>
         <header className='App-header'>
           <img src={logo} className='App-logo' alt='logo' />
-          <p>Hi {this.state.name}</p>
+          <p>
+            Hi {this.state.name.firstName} {this.state.name.lastName}, I like{' '}
+            {this.state.company}
+          </p>
           <button
             onClick={() => {
-              this.setState({ name: 'Antonio' });
+              this.setState({
+                name: { firstName: 'Ian', lastName: 'Petrenko' },
+              });
             }}
           >
             Change name
