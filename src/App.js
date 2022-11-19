@@ -42,6 +42,7 @@ class App extends Component {
               monster.name.includes(event.target.value)
             );
             console.log(filteredMonsters);
+            this.setState({ monsters: filteredMonsters });
           }}
         />
         {this.state.monsters.map((monster) => (
