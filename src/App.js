@@ -30,6 +30,11 @@ class App extends Component {
 
   render() {
     console.log('render');
+
+    const filteredMonsters = this.state.monsters.filter((monster) => {
+      return monster.name.toLowerCase().includes(searchString);
+    });
+
     return (
       <div className='App'>
         <input
@@ -37,12 +42,8 @@ class App extends Component {
           type='search'
           placeholder='search monsters'
           onChange={(event) => {
-            console.log('event: ', event.target.value);
             const searchString = event.target.value.toLocaleLowerCase(); // FFfffFF => fffffff
-            const filteredMonsters = this.state.monsters.filter((monster) => {
-              return monster.name.toLowerCase().includes(searchString);
-            });
-            console.log(filteredMonsters);
+
             this.setState(() => {
               return { monsters: filteredMonsters };
             });
