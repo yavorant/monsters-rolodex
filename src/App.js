@@ -41,8 +41,12 @@ class App extends Component {
   render() {
     console.log('render');
 
-    const filteredMonsters = this.state.monsters.filter((monster) => {
-      return monster.name.toLowerCase().includes(this.state.searchField);
+    //destructuring not to type this. every time:
+    const { monsters, searchField } = this.state;
+    const { onChangeHandler } = this;
+
+    const filteredMonsters = monsters.filter((monster) => {
+      return monster.name.toLowerCase().includes(searchField);
     });
 
     return (
@@ -51,7 +55,7 @@ class App extends Component {
           className='search-box'
           type='search'
           placeholder='search monsters'
-          onChange={this.onChangeHandler}
+          onChange={onChangeHandler}
         />
         {filteredMonsters.map((monster) => (
           <div key={monster.id}>
