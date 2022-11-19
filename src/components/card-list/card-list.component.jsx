@@ -7,9 +7,20 @@ class CardList extends Component {
 
     return (
       <div>
-        {monsters.map((monster) => (
-          <h2 key={monster.id}>{monster.name}</h2>
-        ))}
+        {monsters.map((monster) => {
+          // <h1 key={monster.id}>{monster.name}</h1>
+          const { name, email, id } = monster;
+          return (
+            <div className='card-container' key={id}>
+              <img
+                alt={`monster ${name}`}
+                src={`https://robohash.org/${id}?set=set2&200*200`}
+              />
+              <h2>{name}</h2>
+              <p>{email}</p>
+            </div>
+          );
+        })}
       </div>
     );
   }
